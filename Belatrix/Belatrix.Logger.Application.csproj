@@ -5,9 +5,9 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C32E3798-4DEA-42DC-B1EC-D9B2D41B6975}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Belatrix</RootNamespace>
-    <AssemblyName>Belatrix</AssemblyName>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Belatrix.Logger.Application</RootNamespace>
+    <AssemblyName>Belatrix.Logger.Application</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,8 +32,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,11 +47,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Enums\LogType.cs" />
+    <Compile Include="JobLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Belatrix.Logger.DA\Belatrix.Logger.DA.csproj">
+      <Project>{E314D64B-9F25-4FED-9CF8-5CCAD69F3ABA}</Project>
+      <Name>Belatrix.Logger.DA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Belatrix.Logger.Helper\Belatrix.Logger.Helper.csproj">
+      <Project>{08FA4DB3-EF58-422E-AC12-ADECA150DB56}</Project>
+      <Name>Belatrix.Logger.Helper</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
